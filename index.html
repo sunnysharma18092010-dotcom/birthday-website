@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Happy Birthday Sunny Sharma! 🎉</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-content">
+            <h1 class="welcome-title">🎂 Birthday Celebration 🎂</h1>
+            <p class="welcome-text">Get ready for an amazing surprise!</p>
+            <button class="get-started-btn" onclick="startCelebration()">✨ Get Started ✨</button>
+        </div>
+    </div>
+
+    <!-- Main Celebration Screen -->
+    <div id="celebrationScreen" class="celebration-screen hidden">
+        <!-- Background decorations -->
+        <div class="stars"></div>
+        <div class="balloons-container"></div>
+        <div class="lights-container"></div>
+        
+        <!-- Main content -->
+        <div class="main-content">
+            <h1 class="birthday-title">Happy Birthday<br><span class="birthday-name">Sunny Sharma</span></h1>
+            
+            <!-- Cake Container -->
+            <div class="cake-container">
+                <div class="candles">
+                    <div class="candle">
+                        <div class="flame"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame"></div>
+                    </div>
+                </div>
+                <div class="cake">
+                    <div class="cake-layer-3"></div>
+                    <div class="cake-layer-2"></div>
+                    <div class="cake-layer-1"></div>
+                </div>
+            </div>
+
+            <p class="blow-text">👇 Click or Blow to Extinguish the Candles! 👇</p>
+            
+            <!-- Blow detector area -->
+            <div class="blow-area" onclick="extinguishCandles()">
+                <p>💨 Blow Here 💨</p>
+            </div>
+
+            <div class="wishes-section">
+                <h2>✨ Special Wishes ✨</h2>
+                <p class="wish-text">May all your dreams come true!<br>Have a magical year ahead! 🌟</p>
+            </div>
+        </div>
+
+        <!-- Confetti -->
+        <div class="confetti-container" id="confettiContainer"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
