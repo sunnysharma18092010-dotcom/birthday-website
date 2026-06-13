@@ -3,66 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 Happy Birthday Sunny Sharma! 🎉</title>
+    <title>Happy Birthday - A Special Celebration</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Welcome Screen -->
-    <div id="welcomeScreen" class="welcome-screen">
-        <div class="welcome-content">
-            <h1 class="welcome-title">🎂 Birthday Celebration 🎂</h1>
-            <p class="welcome-text">Get ready for an amazing surprise!</p>
-            <button class="get-started-btn" onclick="startCelebration()">✨ Get Started ✨</button>
+    <!-- Opening Screen -->
+    <div id="openingScreen" class="screen active">
+        <div class="stars-background"></div>
+        <div class="fairy-lights">
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+        </div>
+        
+        <div class="opening-content">
+            <h1 class="opening-title">✨ A Special Moment ✨</h1>
+            <p class="opening-subtitle">Let's celebrate something wonderful</p>
+            
+            <div class="button-container">
+                <button class="celebration-btn start-btn" onclick="startCelebration()">
+                    <span class="btn-icon">🎉</span>
+                    <span class="btn-text">Start Celebration</span>
+                </button>
+                <button class="celebration-btn surprise-btn" onclick="openSurprise()">
+                    <span class="btn-icon">💌</span>
+                    <span class="btn-text">Open Surprise</span>
+                </button>
+            </div>
         </div>
     </div>
 
-    <!-- Main Celebration Screen -->
-    <div id="celebrationScreen" class="celebration-screen hidden">
-        <!-- Background decorations -->
-        <div class="stars"></div>
-        <div class="balloons-container"></div>
-        <div class="lights-container"></div>
+    <!-- Celebration Scene -->
+    <div id="celebrationScene" class="screen">
+        <canvas id="particleCanvas" class="particle-canvas"></canvas>
         
-        <!-- Main content -->
-        <div class="main-content">
-            <h1 class="birthday-title">Happy Birthday<br><span class="birthday-name">Sunny Sharma</span></h1>
+        <!-- Background decorations -->
+        <div class="celebration-background">
+            <div class="glowing-lights">
+                <div class="glow"></div>
+                <div class="glow"></div>
+                <div class="glow"></div>
+                <div class="glow"></div>
+            </div>
             
-            <!-- Cake Container -->
-            <div class="cake-container">
+            <!-- Floating balloons -->
+            <div class="balloons-container">
+                <div class="balloon red"></div>
+                <div class="balloon blue"></div>
+                <div class="balloon pink"></div>
+                <div class="balloon yellow"></div>
+                <div class="balloon purple"></div>
+                <div class="balloon green"></div>
+            </div>
+            
+            <!-- Ribbons -->
+            <div class="ribbons">
+                <div class="ribbon ribbon-1"></div>
+                <div class="ribbon ribbon-2"></div>
+            </div>
+        </div>
+
+        <!-- Audio control -->
+        <div class="audio-control">
+            <button id="audioToggle" class="audio-btn" onclick="toggleAudio()">🔊 Music</button>
+        </div>
+
+        <!-- Birthday Cake -->
+        <div class="cake-container">
+            <div class="cake">
+                <div class="cake-layer cake-bottom"></div>
+                <div class="cake-layer cake-middle"></div>
+                <div class="cake-layer cake-top"></div>
+                
+                <!-- Candles -->
                 <div class="candles">
                     <div class="candle">
-                        <div class="flame"></div>
+                        <div class="candle-stick"></div>
+                        <div class="flame" id="flame-0"></div>
                     </div>
                     <div class="candle">
-                        <div class="flame"></div>
+                        <div class="candle-stick"></div>
+                        <div class="flame" id="flame-1"></div>
                     </div>
                     <div class="candle">
-                        <div class="flame"></div>
+                        <div class="candle-stick"></div>
+                        <div class="flame" id="flame-2"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="candle-stick"></div>
+                        <div class="flame" id="flame-3"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="candle-stick"></div>
+                        <div class="flame" id="flame-4"></div>
                     </div>
                 </div>
-                <div class="cake">
-                    <div class="cake-layer-3"></div>
-                    <div class="cake-layer-2"></div>
-                    <div class="cake-layer-1"></div>
-                </div>
+
+                <!-- Decoration -->
+                <div class="cake-text">🎂 Make a Wish 🎂</div>
             </div>
 
-            <p class="blow-text">👇 Click or Blow to Extinguish the Candles! 👇</p>
-            
-            <!-- Blow detector area -->
-            <div class="blow-area" onclick="extinguishCandles()">
-                <p>💨 Blow Here 💨</p>
-            </div>
+            <!-- Blow candles button -->
+            <button class="blow-btn" id="blowBtn" onclick="startBlowAnimation()">
+                ����️ Blow the Candles
+            </button>
+        </div>
+    </div>
 
-            <div class="wishes-section">
-                <h2>✨ Special Wishes ✨</h2>
-                <p class="wish-text">May all your dreams come true!<br>Have a magical year ahead! 🌟</p>
-            </div>
+    <!-- Envelope Screen -->
+    <div id="envelopeScreen" class="screen">
+        <div class="envelope-background">
+            <div class="floating-particles"></div>
         </div>
 
-        <!-- Confetti -->
-        <div class="confetti-container" id="confettiContainer"></div>
+        <div class="envelope-container">
+            <div class="envelope" id="envelope">
+                <div class="envelope-front">
+                    <div class="envelope-label">For You ✨</div>
+                </div>
+                <div class="envelope-flap" id="envelopeFlap"></div>
+            </div>
+
+            <!-- Love letter -->
+            <div class="letter" id="letter">
+                <div class="letter-content">
+                    <p class="letter-text" id="letterText"></p>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Final Celebration Screen -->
+    <div id="finalScreen" class="screen">
+        <canvas id="finalParticles" class="final-canvas"></canvas>
+        
+        <div class="final-content">
+            <h1 class="final-title">🎈 Happy Birthday! 🎈</h1>
+            <p class="final-subtitle">Today is all about celebrating you!</p>
+            
+            <div class="celebration-text">
+                <div class="floating-text">✨</div>
+                <div class="floating-text">💫</div>
+                <div class="floating-text">❤️</div>
+                <div class="floating-text">🎉</div>
+                <div class="floating-text">⭐</div>
+            </div>
+
+            <button class="celebrate-again-btn" onclick="location.reload()">
+                🔄 Celebrate Again
+            </button>
+        </div>
+    </div>
+
+    <!-- Hidden audio element -->
+    <audio id="birthdayMusic" preload="auto" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
 
     <script src="script.js"></script>
 </body>
